@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andile Prince Bhebhe — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burnt:   #C05A2A;
+    --earth:   #8B6B4A;
+    --sand:    #D9C4A8;
+    --deep:    #1A1510;
+    --mid:     #2E251C;
+    --off:     #F5F0E8;
+    --muted:   #9E8E7C;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--off);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(26,21,16,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(192,90,42,0.15);
+  }
+  .nav-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.12em;
+    color: var(--sand);
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--burnt); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 55%; height: 100%;
+    background: linear-gradient(135deg, var(--mid) 0%, #3D2B1A 100%);
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 0;
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--burnt);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 8vw, 7.5rem);
+    line-height: 0.92;
+    color: var(--off);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name span { color: var(--burnt); }
+  .hero-tagline {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--sand);
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: var(--burnt);
+    color: var(--off);
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .hero-cta:hover { background: #A04822; transform: translateY(-2px); }
+  .hero-cta svg { width: 14px; height: 14px; }
+
+  .hero-stats {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; gap: 2rem;
+    align-items: flex-end;
+    padding-right: 2rem;
+  }
+  .stat { text-align: right; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--burnt);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+  .stat-divider {
+    width: 60px; height: 1px;
+    background: rgba(192,90,42,0.3);
+    margin-left: auto;
+    margin-top: 2rem;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 6rem 3rem; }
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--burnt);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    margin-bottom: 3rem;
+    color: var(--off);
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--mid); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-body {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.2rem;
+    line-height: 1.75;
+    color: var(--sand);
+  }
+  .about-body p + p { margin-top: 1.2rem; }
+  .contact-block { margin-top: 2rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .contact-item span { color: var(--sand); }
+  .contact-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--burnt);
+    flex-shrink: 0;
+  }
+
+  /* languages */
+  .lang-block { margin-top: 2rem; }
+  .lang-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .lang-list { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .lang-pill {
+    padding: 0.35rem 1rem;
+    border: 1px solid rgba(192,90,42,0.4);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--sand);
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--deep); }
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+  .exp-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .exp-item:hover { background: rgba(192,90,42,0.04); }
+  .exp-meta {}
+  .exp-period {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--burnt);
+    margin-bottom: 0.4rem;
+  }
+  .exp-company {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .exp-content {}
+  .exp-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    color: var(--off);
+    margin-bottom: 1rem;
+  }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .exp-bullets li {
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.55;
+  }
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--burnt);
+    font-size: 0.75rem;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--mid); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-card {
+    border: 1px solid rgba(192,90,42,0.2);
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--burnt);
+    transition: height 0.3s ease;
+  }
+  .skill-card:hover { border-color: rgba(192,90,42,0.5); transform: translateY(-3px); }
+  .skill-card:hover::before { height: 100%; }
+  .skill-card-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--burnt);
+    margin-bottom: 1rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tag {
+    font-size: 0.75rem;
+    color: var(--sand);
+    padding: 0.3rem 0.75rem;
+    background: rgba(255,255,255,0.04);
+  }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--deep); }
+  .edu-list { display: flex; flex-direction: column; gap: 2rem; }
+  .edu-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .edu-year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: rgba(192,90,42,0.4);
+    line-height: 1;
+  }
+  .edu-degree {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--off);
+    letter-spacing: 0.03em;
+    margin-bottom: 0.3rem;
+  }
+  .edu-school {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--burnt);
+    text-align: center;
+    padding: 6rem 3rem;
+  }
+  #contact .section-label { color: rgba(255,255,255,0.6); }
+  #contact .section-title { color: #fff; margin-bottom: 1rem; }
+  .contact-tagline {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2.5rem;
+  }
+  .contact-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.35);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    text-align: center;
+    padding: 2rem 3rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+    .hero::before { display: none; }
+    .hero-stats { align-items: flex-start; padding-right: 0; flex-direction: row; flex-wrap: wrap; gap: 1.5rem; }
+    .stat { text-align: left; }
+    .stat-divider { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+    .edu-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    section { padding: 4rem 1.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Andile P. Bhebhe</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text reveal">
+    <div class="hero-eyebrow">Administrator · Project Leader · Sales Professional</div>
+    <h1 class="hero-name">
+      Andile<br>
+      Prince<br>
+      <span>Bhebhe</span>
+    </h1>
+    <p class="hero-tagline">Building operational excellence across construction, security, and telecommunications.</p>
+    <a href="#contact" class="hero-cta">
+      Get in Touch
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M2 7h10M7 2l5 5-5 5"/>
+      </svg>
+    </a>
+  </div>
+  <div class="hero-stats reveal">
+    <div class="stat">
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Industries Served</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-num">BSc</div>
+      <div class="stat-label">Construction Management</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Who I Am</h2>
+      <div class="about-body">
+        <p>I'm a versatile professional from Bulawayo, Zimbabwe, with a solid foundation in construction management and a track record of delivering results across multiple demanding sectors.</p>
+        <p>From coordinating crews on active construction sites to scouting enterprise clients for security services and canvassing markets for fibre broadband products, I bring structured thinking and a people-first approach to every role I take on.</p>
+        <p>I thrive in dynamic environments where operational efficiency, clear communication, and strategic initiative make the real difference.</p>
+      </div>
+      <div class="contact-block">
+        <div class="contact-item">
+          <span class="contact-dot"></span>
+          <span>Bulawayo Province, Zimbabwe</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-dot"></span>
+          <span>andileprincebhebhe@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-dot"></span>
+          <span>+263 77 730 3324</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="lang-block">
+        <div class="lang-label">Languages</div>
+        <div class="lang-list">
+          <span class="lang-pill">English</span>
+          <span class="lang-pill">Ndebele</span>
+          <span class="lang-pill">Shona</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label reveal">Experience</div>
+  <h2 class="section-title reveal">Where I've Worked</h2>
+  <div class="exp-list">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">2025 — Present</div>
+        <div class="exp-company">Dragclaw Security Services</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Administrator (Part-Time)</div>
+        <ul class="exp-bullets">
+          <li>Provide administrative support to senior management, including scheduling meetings and appointments with clients.</li>
+          <li>Conduct surprise site visits to verify personnel performance and compliance on active deployments.</li>
+          <li>Scout and identify potential clients across various industries to support business development.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">2025 — Present</div>
+        <div class="exp-company">Liquid Intelligent Technologies Zimbabwe</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Direct Sales Representative</div>
+        <ul class="exp-bullets">
+          <li>Canvass the market on behalf of Liquid Home, presenting fibre broadband products and services to residential and business clients.</li>
+          <li>Build and sustain strong customer relationships to maximise satisfaction and long-term loyalty.</li>
+          <li>Track and report competitor developments to management to inform strategic planning.</li>
+          <li>Produce accurate, regular sales reports for senior management review.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Nov 2024 — Present</div>
+        <div class="exp-company">Goldarch Construction & Engineering · Bulawayo</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Construction Site Foreman</div>
+        <ul class="exp-bullets">
+          <li>Coordinate daily on-site operations by scheduling tasks, allocating resources, and supervising crews to meet project milestones within timeline and safety standards.</li>
+          <li>Direct subcontractor activities — monitoring progress, verifying quality compliance, and resolving site challenges to maintain continuous workflow.</li>
+          <li>Implement clear reporting structures that enable faster issue resolution and smoother stakeholder coordination.</li>
+          <li>Enforce strict safety protocols and regulatory standards, significantly reducing workplace incidents.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">2022 — 2025</div>
+        <div class="exp-company">Econet Wireless Zimbabwe</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Customer Service Representative</div>
+        <ul class="exp-bullets">
+          <li>Handled tens of thousands of client inquiries and delivered timely resolutions to ensure customer satisfaction and retention.</li>
+          <li>Managed confidential client information with professionalism, protecting both clients and company reputation.</li>
+          <li>Recovered funds sent to incorrect EcoCash and bank accounts on behalf of customers.</li>
+          <li>De-escalated irate clients with empathy and emotional intelligence, consistently maintaining a professional standard.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label reveal">Capabilities</div>
+  <h2 class="section-title reveal">What I Bring</h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Construction & Engineering</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Construction Management</span>
+        <span class="skill-tag">Equipment Oversight</span>
+        <span class="skill-tag">Safety Compliance</span>
+        <span class="skill-tag">Hazard Assessment</span>
+        <span class="skill-tag">Fire Protection</span>
+        <span class="skill-tag">Reliability Analysis</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Administration & Operations</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Scheduling</span>
+        <span class="skill-tag">Process Flows</span>
+        <span class="skill-tag">Quality Planning</span>
+        <span class="skill-tag">Resource Coordination</span>
+        <span class="skill-tag">Reporting</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Sales & Client Relations</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Market Canvassing</span>
+        <span class="skill-tag">Client Scouting</span>
+        <span class="skill-tag">Customer Retention</span>
+        <span class="skill-tag">Competitor Analysis</span>
+        <span class="skill-tag">Relationship Building</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Core Competencies</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Adaptability</span>
+        <span class="skill-tag">Accountability</span>
+        <span class="skill-tag">Emotional Intelligence</span>
+        <span class="skill-tag">Leadership</span>
+        <span class="skill-tag">Communication</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label reveal">Education</div>
+  <h2 class="section-title reveal">Academic Background</h2>
+  <div class="edu-list">
+    <div class="edu-item reveal">
+      <div class="edu-year">2020<br>–<br>2024</div>
+      <div>
+        <div class="edu-degree">BSc Honours — Construction Management</div>
+        <div class="edu-school">National University of Science and Technology · Bulawayo, Zimbabwe</div>
+      </div>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-year">2014<br>–<br>2019</div>
+      <div>
+        <div class="edu-degree">8 Ordinary Level Passes · 3 Advanced Level Passes</div>
+        <div class="edu-school">Mpopoma High School · Bulawayo, Zimbabwe</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's Connect</div>
+  <h2 class="section-title">Ready to Work Together?</h2>
+  <p class="contact-tagline">Reach out for project opportunities, collaborations, or just to say hello.</p>
+  <div class="contact-links">
+    <a href="mailto:andileprincebhebhe@gmail.com" class="contact-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="1" y="3" width="12" height="8" rx="1"/>
+        <path d="M1 4l6 4.5L13 4"/>
+      </svg>
+      Email Me
+    </a>
+    <a href="tel:+263777303324" class="contact-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M2 2h3l1.5 3.5-1.5 1.5a8 8 0 003 3l1.5-1.5L13 10v3a1 1 0 01-1 1A11 11 0 011 3a1 1 0 011-1z"/>
+      </svg>
+      Call Me
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2025 Andile Prince Bhebhe &nbsp;·&nbsp; Bulawayo, Zimbabwe
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
